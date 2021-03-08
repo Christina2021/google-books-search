@@ -22,8 +22,10 @@
   },
   "homepage": "https://github.com/Christina2021/google-books-search#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "mongoose": "^5.11.19"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
