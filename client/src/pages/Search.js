@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import SearchResult from '../components/SearchResult';
@@ -44,6 +45,10 @@ function Search() {
             })
     }
 
+    // function handleSave(event) {
+
+    // }
+
     return (
         <div>
             <Header headerText="Search for a book using the search box below! Searched books may be saved and viewed by clicking the Saved link above!"/>
@@ -69,10 +74,11 @@ function Search() {
                     <div>
                         <h3>Results:</h3>
                         {searchedBooks.map(book => {
-                            if (book.volumeInfo.authors) {
+                            if (book.volumeInfo.authors && book.volumeInfo.description) {
                                 return (
                                     <SearchResult 
                                         key={book.id}
+                                        id={book.id}
                                         title={book.volumeInfo.title}
                                         author={book.volumeInfo.authors}
                                         description={book.volumeInfo.description}

@@ -1,0 +1,13 @@
+.more, .less {
+    color: blue;
+}
+
+.more:hover, .less:hover {
+    color: rgba(0, 0, 255, 0.774);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
