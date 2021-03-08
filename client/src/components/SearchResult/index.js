@@ -21,7 +21,7 @@ function SearchResult(props) {
             </Row>
             <Row>
                 <Col size="3">
-                    <img src={props.image ? `${props.image.smallThumbnail}` : ""} />
+                    <img src={props.image ? `${props.image.smallThumbnail}` : "https://books.google.com/googlebooks/images/no_cover_thumb.gif"} />
                 </Col>
                 <Col size="9">
                     {props.description.length <= 800 ? (
