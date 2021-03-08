@@ -12,7 +12,7 @@ app.use(express.json());
 // Static assets (heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
-  }
+}
 
 // Add routes
 app.use(routes);
