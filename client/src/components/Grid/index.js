@@ -8,6 +8,18 @@ export function Row({ classes, children }) {
     return <div className={classes ? `row ${classes}` : `row`}>{children}</div>
 }
 
-export function Col({ classes, children }) {
-    return <div className={classes ? `col ${classes}` : `col`}>{children}</div>
+export function Col({ size, classes, children }) {
+    return (
+        <div
+            className={classes ? `${size
+            .split(" ")
+            .map(size => "col-" + size)
+            .join(" ")} ${classes}` : `${size
+                .split(" ")
+                .map(size => "col-" + size)
+                .join(" ")} `}
+        >
+            {children}
+        </div>
+    )
 }

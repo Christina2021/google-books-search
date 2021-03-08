@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
+import SearchResult from '../components/SearchResult';
 import { Container } from '../components/Grid';
 import { TextInput, FormBtn } from '../components/Form';
 import API from "../utils/API";
@@ -15,7 +16,6 @@ function Search() {
 
     function setSearched(data) {
         setSearchedBooks(data.items);
-        console.log(searchedBooks);
     }
 
     // For when user types in search box
@@ -33,7 +33,6 @@ function Search() {
 
         //Set Search URL
         let url = `https://www.googleapis.com/books/v1/volumes?q=${formObject.search}&key=${API_KEY}`;
-        console.log(url);
         API.findBooks(url)
             .then(res => {
                 setSearched(res.data);
@@ -49,7 +48,7 @@ function Search() {
         <div>
             <Header headerText="Search for a book using the search box below! Searched books may be saved and viewed by clicking the Saved link above!"/>
             <Container>
-                <form>
+                <form className="d-flex flex-column align-items-center text-center">
                     <div className="form-group">
                         <label forhtml="search">Search for a book:</label>
                         <TextInput 
@@ -58,17 +57,32 @@ function Search() {
                             id="search"
                             name="search"
                             className="form-control"
+                            style={{width: "500px"}}
+                            placeholder="Title of Book"
                         />
                     </div>
                     <FormBtn onClick={handleFormSubmit}>Search Now!</FormBtn>
                 </form>
             </Container>
-            <Container>
+            <Container classes="mt-5">
                 {searchedBooks.length ? (
-                    // {searchedBooks.map(book => (
-
-                    // ))}
-                    <p>Cool it's working.</p>
+                    <div>
+                        <h3>Results:</h3>
+                        {searchedBooks.map(book => {
+                            if (book.volumeInfo.authors) {
+                                return (
+                                    <SearchResult 
+                                        key={book.id}
+                                        title={book.volumeInfo.title}
+                                        author={book.volumeInfo.authors}
+                                        description={book.volumeInfo.description}
+                                        image={book.volumeInfo.imageLinks}
+                                        link={book.volumeInfo.infoLink}
+                                    />
+                                    )
+                            }
+                        })}
+                    </div>
                 ) : (
                 <h3>Use the search box above to begin your search!</h3>
                 )}
