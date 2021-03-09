@@ -55,7 +55,7 @@ function Search() {
                     link: searchedBooks[i].volumeInfo.infoLink,
                     bookID: searchedBooks[i].id
                 })
-                .then(res => console.log(res))
+                .then(res => console.log("Book saved successfully"))
                 .catch(err => console.log(err));
             }
         }
@@ -78,7 +78,7 @@ function Search() {
                             placeholder="Title of Book"
                         />
                     </div>
-                    <FormBtn onClick={handleFormSubmit}>Search Now!</FormBtn>
+                    <FormBtn onClick={handleFormSubmit} className="btn btn-success">Search Now!</FormBtn>
                 </form>
             </Container>
             <Container classes="mt-5">

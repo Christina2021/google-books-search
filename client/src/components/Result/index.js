@@ -12,10 +12,13 @@ function SearchResult(props) {
                 {props.searched === "yes" ? (
                     <div className="ml-auto">
                         <a href={props.link} target="_blank" rel="noreferrer" className="btn btn-info mr-3">View</a>
-                        <FormBtn className="btn btn-info" onClick={props.forBtn}id={props.id}>Save</FormBtn>
+                        <FormBtn className="btn btn-success" onClick={props.forBtn} id={props.id}>Save</FormBtn>
                     </div>
                 ) : (
-                    ""
+                    <div className="ml-auto">
+                        <a href={props.link} target="_blank" rel="noreferrer" className="btn btn-info mr-3">View</a>
+                        <FormBtn className="btn btn-danger" onClick={props.forBtn} id={props.id}>Delete</FormBtn>
+                    </div>
                 )}
             </Row>
             <Row>

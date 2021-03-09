@@ -8,6 +8,8 @@ const booksController = require("../controller/booksController");
 // router.use("/api", apiRoutes);
 router.get("/api/books/", booksController.all)
 router.post("/api/books/", booksController.add)
+router.delete("/api/books/:id", booksController.remove)
+
 
 // If no API routes are hit, send the React app
 router.use(function(req, res) {

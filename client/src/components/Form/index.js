@@ -8,7 +8,7 @@ export function TextInput(props) {
 
 export function FormBtn(props) {
     return(
-      <button {...props} className="btn btn-success">
+      <button {...props}>
         {props.children}
       </button>
     )

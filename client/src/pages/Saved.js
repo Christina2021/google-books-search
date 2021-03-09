@@ -14,11 +14,21 @@ function Saved() {
     function showSaved() {
         API.getBooks()
             .then(res => {
-                console.log(res.data);
                 setBooks(res.data)
             }
             )
             .catch(err => console.log(err));
+    }
+
+    function handleDelete(event) {
+        event.preventDefault();
+        for (let i = 0; i < books.length; i++){
+            if(event.target.id === books[i]._id) {
+                API.deleteBook(books[i]._id)
+                .then(res => showSaved())
+                .catch(err => console.log(err));
+            }
+        }
     }
 
     return (
@@ -31,14 +41,15 @@ function Saved() {
                         {books.map(book => {
                             return (
                                 <Result 
-                                    key={book.bookID}
-                                    id={book.bookID}
+                                    key={book._id}
+                                    id={book._id}
                                     title={book.title}
                                     author={book.authors}
                                     description={book.description}
                                     image={book.image}
                                     link={book.link}
                                     searched="no"
+                                    forBtn={handleDelete}
                                 />
                                 )
                         })}
