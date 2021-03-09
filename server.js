@@ -1,10 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const logger = require("morgan");
 const routes = require("./routes");
 
 // Express App
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Creates logger instance 
+app.use(logger("dev"));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +22,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebookssearch", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true,

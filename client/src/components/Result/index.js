@@ -11,10 +11,14 @@ function SearchResult(props) {
         <Container classes="border border-info p-4">
             <Row>
                 <h4>{props.title}</h4> 
-                <div className="ml-auto">
-                    <a href={props.link} target="_blank" rel="noreferrer" className="btn btn-info mr-3">View</a>
-                    <FormBtn className="btn btn-info">Save</FormBtn>
-                </div>
+                {props.searched === "yes" ? (
+                    <div className="ml-auto">
+                        <a href={props.link} target="_blank" rel="noreferrer" className="btn btn-info mr-3">View</a>
+                        <FormBtn className="btn btn-info" onClick={props.forBtn}id={props.id}>Save</FormBtn>
+                    </div>
+                ) : (
+                    ""
+                )}
             </Row>
             <Row>
                 <p>Written by: {props.author.join(", ")}</p>

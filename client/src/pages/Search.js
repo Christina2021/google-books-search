@@ -1,11 +1,10 @@
 /* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import SearchResult from '../components/SearchResult';
+import Result from '../components/Result';
 import { Container } from '../components/Grid';
 import { TextInput, FormBtn } from '../components/Form';
 import API from "../utils/API";
-
 
 function Search() {
     //API Key
@@ -45,9 +44,23 @@ function Search() {
             })
     }
 
-    // function handleSave(event) {
-
-    // }
+    function handleSave(event) {
+        event.preventDefault();
+        for (let i = 0; i < searchedBooks.length; i++){
+            if(event.target.id === searchedBooks[i].id) {
+                API.saveBook({
+                    title: searchedBooks[i].volumeInfo.title,
+                    authors: searchedBooks[i].volumeInfo.authors,
+                    description: searchedBooks[i].volumeInfo.description,
+                    image: searchedBooks[i].volumeInfo.imageLinks,
+                    link: searchedBooks[i].volumeInfo.infoLink,
+                    book_id: searchedBooks[i].id
+                })
+                .then(res => console.log(res))
+                .catch(err => console.log(err));
+            }
+        }
+    }
 
     return (
         <div>
@@ -76,7 +89,7 @@ function Search() {
                         {searchedBooks.map(book => {
                             if (book.volumeInfo.authors && book.volumeInfo.description) {
                                 return (
-                                    <SearchResult 
+                                    <Result 
                                         key={book.id}
                                         id={book.id}
                                         title={book.volumeInfo.title}
@@ -84,6 +97,8 @@ function Search() {
                                         description={book.volumeInfo.description}
                                         image={book.volumeInfo.imageLinks}
                                         link={book.volumeInfo.infoLink}
+                                        searched="yes"
+                                        forBtn={handleSave}
                                     />
                                     )
                             }
