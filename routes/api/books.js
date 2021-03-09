@@ -5,4 +5,7 @@ router.route("/")
     .get(booksController.all)
     .post(booksController.add);
 
+router.route("/:id")
+  .delete(booksController.remove);
+
 module.exports = router;
