@@ -55,7 +55,7 @@ function Saved() {
                         })}
                     </div>
                 ) : (
-                <h3>There are currently no saved books.</h3>
+                <h3>Saved Books:</h3>
                 )}
             </Container>
         </div>
