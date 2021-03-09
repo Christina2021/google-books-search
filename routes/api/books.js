@@ -3,6 +3,6 @@ const booksController = require("../../controller/booksController");
 
 router.route("/")
     .get(booksController.all)
-    .post(booksController.create);
+    .post(booksController.add);
 
 module.exports = router;

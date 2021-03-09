@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useState, useEffect } from "react";
 import Header from '../components/Header';
 import Result from '../components/Result';
@@ -14,8 +13,10 @@ function Saved() {
 
     function showSaved() {
         API.getBooks()
-            .then(res => 
-                setBooks(res.data)    
+            .then(res => {
+                console.log(res.data);
+                setBooks(res.data)
+            }
             )
             .catch(err => console.log(err));
     }
@@ -30,13 +31,13 @@ function Saved() {
                         {books.map(book => {
                             return (
                                 <Result 
-                                    key={book.id}
-                                    id={book.id}
-                                    title={book.volumeInfo.title}
-                                    author={book.volumeInfo.authors}
-                                    description={book.volumeInfo.description}
-                                    image={book.volumeInfo.imageLinks}
-                                    link={book.volumeInfo.infoLink}
+                                    key={book.bookID}
+                                    id={book.bookID}
+                                    title={book.title}
+                                    author={book.authors}
+                                    description={book.description}
+                                    image={book.image}
+                                    link={book.link}
                                     searched="no"
                                 />
                                 )

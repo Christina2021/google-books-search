@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Result from '../components/Result';
@@ -54,7 +53,7 @@ function Search() {
                     description: searchedBooks[i].volumeInfo.description,
                     image: searchedBooks[i].volumeInfo.imageLinks,
                     link: searchedBooks[i].volumeInfo.infoLink,
-                    book_id: searchedBooks[i].id
+                    bookID: searchedBooks[i].id
                 })
                 .then(res => console.log(res))
                 .catch(err => console.log(err));

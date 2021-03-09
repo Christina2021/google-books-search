@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import LongDescription from '../LongDescription';
 import { Container, Row, Col } from '../Grid';
@@ -6,7 +5,6 @@ import { FormBtn } from '../Form';
 
 
 function SearchResult(props) {
-
     return (
         <Container classes="border border-info p-4">
             <Row>
