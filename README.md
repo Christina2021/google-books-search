@@ -5,8 +5,7 @@
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB-Logo">
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express-Logo">
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React-Logo">
-  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
-" alt="Node-Logo">
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="Node-Logo">
 
 </p>
 
@@ -40,13 +39,13 @@ This application will require Node.js and MongoDB.  Please make sure these are i
 
 ## Usage
 Please see the following instructions on how to use this application: <br>
-⭐ Once the webpage has been opened, the user will see a search box in which they may enter in a book they would like search for.  Clicking the "Search Now" button after entering in a book title will pull up the results.<br>
+⭐ Once the webpage has been opened, the user will see a search box in which they may enter in a book they would like search for.  Clicking the "Search Now" button after entering in a book title will pull up the results.<br><br>
 ![Screenshot2](./images/readme-screenshot-02.png)<br>
-⭐ The results will list out books that were pulled from the Google Books API.  Each result will show the title, author, book cover image, book description (with a "...See More" link if the description is long), and a view and save button.  The view button will open the book in Google Books (in a new tab).  The save button will add the book to the Saved list.<br>
-![Screenshot3](./images/readme-screenshot-03.png)<br>
-⭐ The Saved section will show a list of books saved by users.  A user may view a book in Google Books in a new tab, or they may delete a book from the list.  <br>
-![Screenshot4](./images/readme-screenshot-04.png)<br>
-⭐ If other users are using the app when one user saves a book, they will be sent a notification (through the use of the socket.io and bootstrap-notify packages). The below screenshot will show 2 different windows opened for the app where one clicked the save button, and the other received the notification.  <br>
+⭐ The results will list out books that were pulled from the Google Books API.  Each result will show the title, author, book cover image, book description (with a "...See More" link if the description is long), and a view and save button.  The view button will open the book in Google Books (in a new tab).  The save button will add the book to the Saved list.<br><br>
+![Screenshot3](./images/readme-screenshot-03.png)<br><br>
+⭐ The Saved section will show a list of books saved by users.  A user may view a book in Google Books in a new tab, or they may delete a book from the list.  <br><br>
+![Screenshot4](./images/readme-screenshot-04.png)<br><br>
+⭐ If other users are using the app when one user saves a book, they will be sent a notification (through the use of the socket.io and bootstrap-notify packages). The below screenshot will show 2 different windows opened for the app where one clicked the save button, and the other received the notification.  <br><br>
 ![Screenshot5](./images/readme-screenshot-05.png)<br>
 
 ## Questions?
