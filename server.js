@@ -37,7 +37,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
     useUnifiedTopology: true,
 });
 
-// Socket.io
+// Socket.io emitter
 io.on("connection", (socket) => {
     socket.on("bookSaved", (message) => {
         socket.broadcast.emit("bookSaved", message.message);

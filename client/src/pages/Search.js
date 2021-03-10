@@ -8,8 +8,9 @@ import $ from 'jquery';
 import 'bootstrap-notify';
 
 import socketIOClient from 'socket.io-client';
-const ENDPOINT = "http://192.168.1.71:3000";
-const socket = socketIOClient(ENDPOINT);
+// const ENDPOINT = "http://192.168.1.71:3000";
+// const socket = socketIOClient(ENDPOINT);
+const socket = socketIOClient();
 
 function Search() {
     //API Key
@@ -63,6 +64,7 @@ function Search() {
                 })
                 .then(res => {
                     console.log("Book saved successfully")
+                    // Socket.io for when a book is saved
                     socket.emit("bookSaved", {
                       "message": "A user has added a book to the Saved books list!"
                     });
@@ -72,6 +74,7 @@ function Search() {
         }
     }
 
+    // When a book is saved, notify using bootstrap-notify
     socket.on("bookSaved", (message) => {
         if(document.location.hash === "#/saved"){
             $.notify(`${message}  Please refresh the page!`,{delay:0});
