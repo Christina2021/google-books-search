@@ -7,6 +7,15 @@ const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// For socket.io to be used
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"],
+      }
+});
+
 // Creates logger instance 
 app.use(logger("dev"));
 
@@ -28,9 +37,14 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks", {
     useUnifiedTopology: true,
 });
 
-
+// Socket.io
+io.on("connection", (socket) => {
+    socket.on("bookSaved", (message) => {
+        socket.broadcast.emit("bookSaved", message.message);
+    });
+});
 
 // Server
-app.listen(PORT, function() {
+server.listen(PORT, function() {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });

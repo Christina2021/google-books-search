@@ -4,6 +4,12 @@ import Result from '../components/Result';
 import { Container } from '../components/Grid';
 import { TextInput, FormBtn } from '../components/Form';
 import API from "../utils/API";
+import $ from 'jquery';
+import 'bootstrap-notify';
+
+import socketIOClient from 'socket.io-client';
+const ENDPOINT = "http://192.168.1.71:3000";
+const socket = socketIOClient(ENDPOINT);
 
 function Search() {
     //API Key
@@ -55,11 +61,24 @@ function Search() {
                     link: searchedBooks[i].volumeInfo.infoLink,
                     bookID: searchedBooks[i].id
                 })
-                .then(res => console.log("Book saved successfully"))
+                .then(res => {
+                    console.log("Book saved successfully")
+                    socket.emit("bookSaved", {
+                      "message": "A user has added a book to the Saved books list!"
+                    });
+                })
                 .catch(err => console.log(err));
             }
         }
     }
+
+    socket.on("bookSaved", (message) => {
+        if(document.location.hash === "#/saved"){
+            $.notify(`${message}  Please refresh the page!`,{delay:0});
+        } else {
+            $.notify(`${message}`);
+        }
+    })
 
     return (
         <div>
